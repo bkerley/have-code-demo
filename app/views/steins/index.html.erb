@@ -1,0 +1,22 @@
+<h1>Listing steins</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Material</th>
+  </tr>
+
+<% @steins.each do |stein| %>
+  <tr>
+    <td><%=h stein.name %></td>
+    <td><%=h stein.material %></td>
+    <td><%= link_to 'Show', stein %></td>
+    <td><%= link_to 'Edit', edit_stein_path(stein) %></td>
+    <td><%= link_to 'Destroy', stein, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New stein', new_stein_path %>
