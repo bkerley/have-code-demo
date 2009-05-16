@@ -10,9 +10,9 @@
   <tr>
     <td><%=h stein.name %></td>
     <td><%=h stein.material %></td>
-    <td><%= link_to 'Show', stein %></td>
-    <td><%= link_to 'Edit', edit_stein_path(stein) %></td>
-    <td><%= link_to 'Destroy', stein, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', stein_path(stein.code) %></td>
+    <td><%= link_to 'Edit', edit_stein_path(stein.code) %></td>
+    <td><%= link_to 'Destroy', stein_path(stein.code), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

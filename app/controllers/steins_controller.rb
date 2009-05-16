@@ -13,7 +13,7 @@ class SteinsController < ApplicationController
   # GET /steins/1
   # GET /steins/1.xml
   def show
-    @stein = Stein.find(params[:id])
+    @stein = Stein.find_by_code(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class SteinsController < ApplicationController
 
   # GET /steins/1/edit
   def edit
-    @stein = Stein.find(params[:id])
+    @stein = Stein.find_by_code(params[:id])
   end
 
   # POST /steins
@@ -45,7 +45,7 @@ class SteinsController < ApplicationController
     respond_to do |format|
       if @stein.save
         flash[:notice] = 'Stein was successfully created.'
-        format.html { redirect_to(@stein) }
+        format.html { redirect_to(stein_path(@stein.code)) }
         format.xml  { render :xml => @stein, :status => :created, :location => @stein }
       else
         format.html { render :action => "new" }
@@ -57,12 +57,12 @@ class SteinsController < ApplicationController
   # PUT /steins/1
   # PUT /steins/1.xml
   def update
-    @stein = Stein.find(params[:id])
+    @stein = Stein.find_by_code(params[:id])
 
     respond_to do |format|
       if @stein.update_attributes(params[:stein])
         flash[:notice] = 'Stein was successfully updated.'
-        format.html { redirect_to(@stein) }
+        format.html { redirect_to(stein_path(@stein.code)) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -74,7 +74,7 @@ class SteinsController < ApplicationController
   # DELETE /steins/1
   # DELETE /steins/1.xml
   def destroy
-    @stein = Stein.find(params[:id])
+    @stein = Stein.find_by_code(params[:id])
     @stein.destroy
 
     respond_to do |format|

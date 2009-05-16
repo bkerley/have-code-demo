@@ -1,6 +1,6 @@
 <h1>Editing stein</h1>
 
-<% form_for(@stein) do |f| %>
+<% form_for(@stein, :url=>stein_path(@stein.code)) do |f| %>
   <%= f.error_messages %>
 
   <p>
